@@ -15,7 +15,7 @@
 #
 # (When overriding, include vagrant.local if you need it)
 hosts:
-    - vagrant.local
+    - sunny.local
 
 # IP address to use on the private network
 #
@@ -77,12 +77,21 @@ paths:
 synced_folders:
     logs/nginx: /var/log/nginx
     logs/php: /var/log/php
+    ../sunny: /vagrant/content/plugins/sunny
 
 # Plugins
 #
 # Install and activate a list of plugins from wp.org
-#plugins:
-#    - query-monitor
+plugins:
+    - query-monitor
+    - debug-bar
+    - debug-bar-actions-and-filters-addon
+    - debug-bar-console
+    - debug-bar-cron
+    - debug-bar-list-dependencies
+    - debug-bar-remote-requests
+    - debug-bar-slow-actions
+    - debug-bar-transients
 
 # Themes
 #
@@ -94,9 +103,10 @@ synced_folders:
 # Extensions
 #
 # Install a list of extensions automatically
-#extensions:
-#  - Chassis/Tester
-#  - git@github.com:Chassis/memcache.git
+extensions:
+    - Chassis/db-backup
+    - Chassis/MailHog
+    - Chassis/SequelPro
 
 # PHP version
 # Values: 5.6, 7.0, 7.1 (or 5.6.30)
@@ -107,12 +117,12 @@ virtualbox:
     # Memory, in megabytes.
     #
     # (e.g. 1024)
-    memory: null
+    memory: 4096
 
     # CPU count.
     #
     # (e.g. 2)
-    cpus: null
+    cpus: 2
 
 # NFS support. You should change this to Yes if you use VMWare
 nfs: No
